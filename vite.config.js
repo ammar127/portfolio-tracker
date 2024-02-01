@@ -12,6 +12,7 @@ export default ({ mode }) => {
       alias: {
         "src": path.resolve(__dirname, "./src/"),
         "components": `${path.resolve(__dirname, "./src/components/")}`,
+        "context": `${path.resolve(__dirname, "./src/context/")}`,
         "assets": `${path.resolve(__dirname, "./src/assets/")}`,
         "hooks": `${path.resolve(__dirname, "./src/hooks/")}`,
         "routes": `${path.resolve(__dirname, "./src/routes/")}`,
