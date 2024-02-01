@@ -1,20 +1,21 @@
 import api from './api';
 
 export const login = async (username, password) => {
-	const response = await api.post('login', {
-		username,
-		password
-	});
-
-	const token = response.data.token;
-	if (token) {
-		localStorage.setItem('user', JSON.stringify(response.data));
+	let response = null;
+	if (username === password) {
+		response = { username }
+	} else {
+		throw "Username and password doesn't match";
 	}
 
-	return response.data;
+
+	localStorage.setItem('user', JSON.stringify(response));
+
+	return response;
 };
 
 export const isAuthenticated = () => {
+	return {};
 	const user = localStorage.getItem('user');
 	if (!user) {
 		return null;

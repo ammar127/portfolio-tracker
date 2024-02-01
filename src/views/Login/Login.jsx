@@ -1,13 +1,21 @@
 import React from 'react';
-import { Button, Form, Input, Checkbox } from 'antd';
-import './Login.css'; 
-const Login = () => {
-    const onFinish = values => {
-        console.log('Success:', values);
-    };
+import { useNavigate } from 'react-router-dom';
+import { Button, Form, Input, Checkbox, message } from 'antd';
+import { login } from 'services/AuthService';
+import './Login.css';
 
-    const onFinishFailed = errorInfo => {
-        console.log('Failed:', errorInfo);
+const Login = () => {
+
+    const navigate = useNavigate();
+
+    const onFinish = async values => {
+        const { username, password } = values;
+        try {
+            await login(username, password);
+            navigate('/dashboard');
+        } catch (error) {
+            message.error(error);
+        }
     };
 
     return (
@@ -20,7 +28,6 @@ const Login = () => {
                     name="login-form"
                     initialValues={{ remember: true }}
                     onFinish={onFinish}
-                    onFinishFailed={onFinishFailed}
                 >
                     <p className="form-title">Welcome back</p>
                     <p>Login to the Portfolio Tracker</p>
