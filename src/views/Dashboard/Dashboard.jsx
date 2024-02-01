@@ -1,10 +1,13 @@
 import React from 'react'
 import { Card } from 'antd';
 import { Col, Row } from 'antd';
-import Price from 'components/Price/Price';
-import Companies from 'components/Companies/Companies';
-import Profile from 'components/Profile/Profile';
-import News from 'components/News/News';
+import {
+  Price,
+  Companies,
+  Profile,
+  News
+} from 'components';
+
 function Dashboard() {
 
   return (
