@@ -3,6 +3,7 @@ import Loadable from './Loadable';
 import { Navigate } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
 import Layout from 'components/Layout';
+import HomeLayout from '../components/Layout';
 
 const Dashboard = Loadable(lazy(() => import('views/Dashboard/Dashboard')));
 const Login = Loadable(lazy(() => import('views/Login/Login')));
@@ -10,7 +11,7 @@ const Login = Loadable(lazy(() => import('views/Login/Login')));
 const routes = [
     {
         path: '/',
-        element: <ProtectedRoute> <Layout /> </ProtectedRoute>,
+        element: <ProtectedRoute> <HomeLayout /> </ProtectedRoute>,
         children: [
             { path: '/dashboard', exact: true, element: <Dashboard /> },
 
