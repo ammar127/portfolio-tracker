@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button, Form, Input, Checkbox, message } from 'antd';
 import { login } from 'services/AuthService';
 import './Login.css';
+import loginImg from 'assets/login.png'
 
 const Login = () => {
 
@@ -22,7 +23,7 @@ const Login = () => {
         <div className="login-page">
             <div className="login-box">
                 <div className="illustration-wrapper">
-                    <img src="https://mixkit.imgix.net/art/preview/mixkit-left-handed-man-sitting-at-a-table-writing-in-a-notebook-27-original-large.png?q=80&auto=format%2Ccompress&h=700" alt="Login" />
+                    <img src={loginImg} alt="Login" />
                 </div>
                 <Form
                     name="login-form"

@@ -25,19 +25,20 @@ const HomeLayout = () => {
                 }}
             >
                 <div className="logo" >
-                    <Title >Portfolio Tracker</Title>
+                    <Title level={3}>Portfolio Tracker</Title>
                 </div>
-                <RangePicker />
+                <Menu mode="horizontal" theme="dark" items={[{ label: <RangePicker /> }]} />;
+
 
             </Header>
             <Content
                 style={{
                     padding: '20px',
                     minHeight: 280,
-                    height: 'calc(100vh - 130px)',
+                    // height: 'calc(100vh - 130px)',
                 }}
             >
-               <Outlet />
+                <Outlet />
             </Content>
             <Footer
                 style={{
