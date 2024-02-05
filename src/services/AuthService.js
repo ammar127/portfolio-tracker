@@ -1,5 +1,3 @@
-import api from './api';
-
 export const login = async (username, password) => {
 	let response = null;
 	if (username === password) {

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Card } from 'antd';
 import { Col, Row } from 'antd';
 import {
@@ -8,7 +8,10 @@ import {
   News
 } from 'components';
 import ProfileItems from 'data/profileItems.json'
+import NewsData from 'data/news.json'
+
 function Dashboard() {
+ 
 
   return (
     <>
@@ -57,7 +60,7 @@ function Dashboard() {
 
             }}
           >
-            <News />
+            <News data={NewsData} />
           </Card>
         </Col>
       </Row>

@@ -1,28 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Avatar, Divider, List, Skeleton } from 'antd';
-function News() {
+function News({ data }) {
 
-  const [loading, setLoading] = useState(false);
-  const [data, setData] = useState([]);
-  const loadMoreData = () => {
-    if (loading) {
-      return;
-    }
-    setLoading(true);
-    fetch('https://randomuser.me/api/?results=10&inc=name,gender,email,nat,picture&noinfo')
-      .then((res) => res.json())
-      .then((body) => {
-        setData([...data, ...body.results]);
-        setLoading(false);
-      })
-      .catch(() => {
-        setLoading(false);
-      });
-  };
-  useEffect(() => {
-    loadMoreData();
-  }, []);
+
   return (
     <div
       id="scrollableDiv"
@@ -35,7 +16,6 @@ function News() {
     >
       <InfiniteScroll
         dataLength={data.length}
-        next={loadMoreData}
         hasMore={data.length < 50}
         loader={
           <Skeleton
@@ -52,13 +32,12 @@ function News() {
         <List
           dataSource={data}
           renderItem={(item) => (
-            <List.Item key={item.email}>
+            <List.Item key={item.title}>
               <List.Item.Meta
-                avatar={<Avatar src={item.picture.large} />}
-                title={<a href="https://ant.design">{item.name.last}</a>}
-                description={item.email}
+
+                title={<a href={item.url}>{item.title}</a>}
+                description={item.content}
               />
-              <div>Content</div>
             </List.Item>
           )}
         />
