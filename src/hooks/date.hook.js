@@ -10,12 +10,10 @@ const useDateRange = () => {
 
   const updateStartDate = (newStartDate) => {
     setStartDate(newStartDate);
-    console.log("🚀 ~ updateStartDate ~ newStartDate:", startDate)
   };
 
   const updateEndDate = (newEndDate) => {
     setEndDate(newEndDate);
-    console.log("🚀 ~ updateEndDate ~ newEndDate:", endDate)
   };
 
   const resetDateRange = () => {

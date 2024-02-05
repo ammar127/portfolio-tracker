@@ -8,18 +8,18 @@ import {
   News
 } from 'components';
 import NewsData from 'data/news.json'
-import CompaniesData from '../../data/companies.json'
-import { isAfter, isBefore, parse, format } from 'date-fns';
-import { useDateRange } from '../../context/DateRangeContext';
+import CompaniesData from 'data/companies.json'
+import { isAfter, isBefore, parse } from 'date-fns';
+import { useDateRange } from 'context/DateRangeContext';
+
 function Dashboard() {
   const { startDate, endDate, } = useDateRange();
   const [company, setCompany] = useState(null);
 
-  console.log("🚀 ~ Dashboard ~ startDate, endDate:", startDate, endDate)
-
   const onCompanyClick = (_company) => {
     setCompany(_company);
   }
+
   const profileItems = [
     {
       "key": 0,
@@ -47,9 +47,10 @@ function Dashboard() {
       "children": company?.equity || 'XX'
     }
   ];
+
+
   const isDateInRange = (dateString) => {
     const parsedDate = parse(dateString, 'MM/dd/yyyy', new Date());
-
     return isAfter(parsedDate, startDate) && isBefore(parsedDate, endDate);
   };
 
@@ -60,7 +61,7 @@ function Dashboard() {
       filter(d => isDateInRange(d.Date))
       .map(d => ({
         "x": d.Date,
-        "y": d.Price
+        "y": d.Price,
       }))
   }))
 
