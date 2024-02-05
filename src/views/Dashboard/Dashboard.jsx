@@ -7,7 +7,7 @@ import {
   Profile,
   News
 } from 'components';
-
+import ProfileItems from 'data/profileItems.json'
 function Dashboard() {
 
   return (
@@ -44,7 +44,7 @@ function Dashboard() {
             bordered={false}
 
           >
-            <Profile />
+            <Profile items={ProfileItems} />
           </Card>
         </Col>
         <Col flex="1 1 500px" style={{

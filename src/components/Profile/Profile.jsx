@@ -1,7 +1,9 @@
-import React from 'react'
+import React from 'react';
+import { Descriptions } from 'antd';
 
-export default function Profile() {
+
+export default function Profile({items}) {
   return (
-    <div>Profile</div>
+    <Descriptions   items={items} column={1} />
   )
 }

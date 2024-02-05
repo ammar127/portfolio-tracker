@@ -1,0 +1,22 @@
+[
+    {
+        "key": 1,
+        "label": "Industry",
+        "children": "Computer Science"
+    },
+    {
+        "key": 2,
+        "label": "Sector",
+        "children": "Web Development"
+    },
+    {
+        "key": 3,
+        "label": "Employees",
+        "children": "800"
+    },
+    {
+        "key": 4,
+        "label": "Equity",
+        "children": "45,000,000"
+    }
+]

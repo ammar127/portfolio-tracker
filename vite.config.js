@@ -19,6 +19,7 @@ export default ({ mode }) => {
         "services": `${path.resolve(__dirname, "./src/services/")}`,
         "utils": `${path.resolve(__dirname, "./src/utils/")}`,
         "views": `${path.resolve(__dirname, "./src/views/")}`,
+        "data": `${path.resolve(__dirname, "./src/data/")}`,
       },
     },
   })
