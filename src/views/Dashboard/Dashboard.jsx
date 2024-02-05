@@ -97,7 +97,7 @@ function Dashboard() {
           <Card
             title="Profile"
             bordered={false}
-
+            style={{height: '500px'}}
           >
             <Profile items={profileItems} />
           </Card>
