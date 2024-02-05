@@ -1,14 +1,13 @@
 import React from 'react'
 import { ResponsiveLine } from "@nivo/line";
 
-import { subMonths, startOfMonth } from 'date-fns';
+import { subMonths, startOfMonth, differenceInDays } from 'date-fns';
+
 
 export default function Price({ data }) {
   console.log("🚀 ~ Price ~ data:", data)
-  const twelveMonthsAgo = subMonths(new Date(), 12);
-  const tickValues = Array.from({ length: 12 }, (_, index) =>
-    startOfMonth(subMonths(twelveMonthsAgo, index))
-  );
+
+
   return (
     <div style={{ height: 400 }}>
        <ResponsiveLine
@@ -32,7 +31,7 @@ export default function Price({ data }) {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: 'Value',
+        legend: 'Price',
         legendOffset: -40,
         legendPosition: 'middle',
       }}
