@@ -11,7 +11,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #335ddc;
+  background-color: #001529;
   border-radius: 8px;
 }
 
@@ -21,4 +21,7 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+}
+.ant-menu-item-selected {
+  background-color: #001529 !important;
 }

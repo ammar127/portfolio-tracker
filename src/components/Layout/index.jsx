@@ -29,7 +29,7 @@ const HomeLayout = () => {
                     <Title level={3}>Portfolio Tracker</Title>
                 </div>
                 <Menu mode="horizontal" theme="dark" items={[{
-                    label: <RangePicker value={[_startDate, _endDate]} onCalendarChange={e => {
+                    label: <RangePicker theme="dark"  value={[_startDate, _endDate]} onCalendarChange={e => {
                         if (e[0] && e[1]) {
                             updateStartDate(e[0])
                             updateEndDate(e[1])
