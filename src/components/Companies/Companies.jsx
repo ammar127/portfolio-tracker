@@ -48,5 +48,5 @@ function Companies({ data, onItemClick }) {
       </InfiniteScroll>
     </div>
   );
-};
+}
 export default Companies;

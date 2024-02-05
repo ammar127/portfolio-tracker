@@ -2,7 +2,6 @@ import React, { lazy } from 'react';
 import Loadable from './Loadable';
 import { Navigate } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
-import Layout from 'components/Layout';
 import HomeLayout from '../components/Layout';
 
 const Dashboard = Loadable(lazy(() => import('views/Dashboard/Dashboard')));

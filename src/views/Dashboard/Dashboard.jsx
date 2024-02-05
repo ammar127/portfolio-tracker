@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Card } from 'antd';
 import { Col, Row } from 'antd';
 import {

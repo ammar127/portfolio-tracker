@@ -42,5 +42,5 @@ function News({ data }) {
       </InfiniteScroll>
     </div>
   );
-};
+}
 export default News;
