@@ -16,10 +16,8 @@ function News({ data }) {
     >
       <InfiniteScroll
         dataLength={data.length}
-        hasMore={data.length < 50}
         loader={
           <Skeleton
-            avatar
             paragraph={{
               rows: 1,
             }}

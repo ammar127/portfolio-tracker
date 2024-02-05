@@ -1,0 +1,30 @@
+[
+    {
+        "code": "AAPL",
+        "companyName": "Apple Inc",
+        "industry": "Computers, Phones * HouseHold, Electronics",
+        "sector": "Technology",
+        "employees": "1610000",
+        "equity": "ORD",
+        "price": 185.85
+    },
+    {
+        "code": "TSLA",
+        "companyName": "Tesla Inc",
+        "industry": "Automobiles & Auto Parts",
+        "sector": "Consumer Cyclicals",
+        "employees": "140473",
+        "equity": "ORD",
+        "price": 187.91
+    },
+    {
+        "code": "NVDA",
+        "companyName": "NVIDIA Corporation",
+        "industry": "Semiconductors & Semiconductor Equipment",
+        "sector": "Technology",
+        "employees": "22473",
+        "equity": "ORD",
+        "price": 661.60
+
+    }
+]

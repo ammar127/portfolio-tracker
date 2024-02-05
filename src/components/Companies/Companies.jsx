@@ -1,28 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { Avatar, Divider, List, Skeleton } from 'antd';
-function Companies() {
+import { Avatar, Button, Divider, List, Skeleton } from 'antd';
+function Companies({ data, onItemClick }) {
 
-  const [loading, setLoading] = useState(false);
-  const [data, setData] = useState([]);
-  const loadMoreData = () => {
-    if (loading) {
-      return;
-    }
-    setLoading(true);
-    fetch('https://randomuser.me/api/?results=10&inc=name,gender,email,nat,picture&noinfo')
-      .then((res) => res.json())
-      .then((body) => {
-        setData([...data, ...body.results]);
-        setLoading(false);
-      })
-      .catch(() => {
-        setLoading(false);
-      });
-  };
-  useEffect(() => {
-    loadMoreData();
-  }, []);
+
   return (
     <div
       id="scrollableDiv"
@@ -35,8 +16,8 @@ function Companies() {
     >
       <InfiniteScroll
         dataLength={data.length}
-        next={loadMoreData}
-        hasMore={data.length < 50}
+
+
         loader={
           <Skeleton
             avatar
@@ -46,7 +27,7 @@ function Companies() {
             active
           />
         }
-        endMessage={<Divider plain>It is all, nothing more 🤐</Divider>}
+        endMessage={<Divider plain></Divider>}
         scrollableTarget="scrollableDiv"
       >
         <List
@@ -54,11 +35,13 @@ function Companies() {
           renderItem={(item) => (
             <List.Item key={item.email}>
               <List.Item.Meta
-                avatar={<Avatar src={item.picture.large} />}
-                title={<a href="https://ant.design">{item.name.last}</a>}
-                description={item.email}
+                title={<a onClick={(e) => { e.preventDefault(); onItemClick(item); }}>{item.companyName}</a>}
+                // title={<Button type="link" onClick={() => onItemClick(item)}>
+                //   {item.companyName}
+                // </Button>}
+                description={item.code}
               />
-              <div>Content</div>
+              <div>{item.price}</div>
             </List.Item>
           )}
         />

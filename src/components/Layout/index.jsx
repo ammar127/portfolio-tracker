@@ -5,13 +5,17 @@ const { Title } = Typography;
 const { RangePicker } = DatePicker;
 import './index.css'
 import { Outlet } from 'react-router-dom';
+import useDateRange from '../../hooks/date.hook';
 
-const items = new Array(15).fill(null).map((_, index) => ({
-    key: index + 1,
-    label: `nav ${index + 1}`,
-}));
 
 const HomeLayout = () => {
+    const {
+        _startDate,
+        _endDate,
+        updateStartDate,
+        updateEndDate,
+    } = useDateRange();
+
     const {
         token: { colorBgContainer, borderRadiusLG },
     } = theme.useToken();
@@ -27,7 +31,14 @@ const HomeLayout = () => {
                 <div className="logo" >
                     <Title level={3}>Portfolio Tracker</Title>
                 </div>
-                <Menu mode="horizontal" theme="dark" items={[{ label: <RangePicker /> }]} />;
+                <Menu mode="horizontal" theme="dark" items={[{
+                    label: <RangePicker value={[_startDate, _endDate]} onCalendarChange={e => {
+                        if (e[0] && e[1]) {
+                            updateStartDate(e[0])
+                            updateEndDate(e[1])
+                        }
+                    }} />
+                }]} />;
 
 
             </Header>
