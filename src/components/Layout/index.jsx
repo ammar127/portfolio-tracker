@@ -5,22 +5,19 @@ const { Title } = Typography;
 const { RangePicker } = DatePicker;
 import './index.css'
 import { Outlet } from 'react-router-dom';
-import useDateRange from '../../hooks/date.hook';
+import {  useDateRange } from '../../context/DateRangeContext';
 
 
 const HomeLayout = () => {
-    const {
-        _startDate,
-        _endDate,
-        updateStartDate,
-        updateEndDate,
-    } = useDateRange();
+    const { _startDate, _endDate, updateStartDate, updateEndDate, resetDateRange } = useDateRange();
 
     const {
         token: { colorBgContainer, borderRadiusLG },
     } = theme.useToken();
     return (
         <Layout>
+
+
             <Header
                 style={{
                     display: 'flex',
@@ -58,6 +55,7 @@ const HomeLayout = () => {
             >
                 Portfolio Tracker ©{new Date().getFullYear()} Created by Ammar
             </Footer>
+
         </Layout>
     );
 };

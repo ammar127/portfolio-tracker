@@ -7,48 +7,63 @@ import {
   Profile,
   News
 } from 'components';
-// import ProfileItems from 'data/profileItems.json'
 import NewsData from 'data/news.json'
 import CompaniesData from '../../data/companies.json'
-import useDateRange from '../../hooks/date.hook';
-
+import { isAfter, isBefore, parse, format } from 'date-fns';
+import { useDateRange } from '../../context/DateRangeContext';
 function Dashboard() {
   const { startDate, endDate, } = useDateRange();
   const [company, setCompany] = useState(null);
 
+  console.log("🚀 ~ Dashboard ~ startDate, endDate:", startDate, endDate)
+
   const onCompanyClick = (_company) => {
-    setCompany(_company.code);
+    setCompany(_company);
   }
-  const getProfileItems = () => {
-    const _company = CompaniesData.find(c => c.code === company);
-    return [
-      {
-        "key": 0,
-        "label": "Name",
-        "children": _company?.companyName || 'XX'
-      },
-      {
-        "key": 1,
-        "label": "Industry",
-        "children": _company?.industry || 'XX'
-      },
-      {
-        "key": 2,
-        "label": "Sector",
-        "children": _company?.sector || 'XX'
-      },
-      {
-        "key": 3,
-        "label": "Employees",
-        "children": _company?.employees || 'XX'
-      },
-      {
-        "key": 4,
-        "label": "Equity",
-        "children": _company?.equity || 'XX'
-      }
-    ];
-  }
+  const profileItems = [
+    {
+      "key": 0,
+      "label": "Name",
+      "children": company?.companyName || 'XX'
+    },
+    {
+      "key": 1,
+      "label": "Industry",
+      "children": company?.industry || 'XX'
+    },
+    {
+      "key": 2,
+      "label": "Sector",
+      "children": company?.sector || 'XX'
+    },
+    {
+      "key": 3,
+      "label": "Employees",
+      "children": company?.employees || 'XX'
+    },
+    {
+      "key": 4,
+      "label": "Equity",
+      "children": company?.equity || 'XX'
+    }
+  ];
+  const isDateInRange = (dateString) => {
+    const parsedDate = parse(dateString, 'MM/dd/yyyy', new Date());
+
+    return isAfter(parsedDate, startDate) && isBefore(parsedDate, endDate);
+  };
+
+  const priceData = CompaniesData.map(c => ({
+    "id": c.companyName,
+    "color": c.color,
+    "data": c.data.
+      filter(d => isDateInRange(d.Date))
+      .map(d => ({
+        "x": d.Date,
+        "y": d.Price
+      }))
+  }))
+
   return (
     <>
       <Row>
@@ -59,7 +74,7 @@ function Dashboard() {
             title="Price"
             bordered={false}
           >
-            <Price />
+            <Price data={priceData} />
           </Card>
         </Col>
         <Col flex="0 1 500px" style={{
@@ -83,7 +98,7 @@ function Dashboard() {
             bordered={false}
 
           >
-            <Profile items={getProfileItems()} />
+            <Profile items={profileItems} />
           </Card>
         </Col>
         <Col flex="1 1 500px" style={{
